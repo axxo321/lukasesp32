@@ -7,6 +7,7 @@
     src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js">
   </script>
   <style>
+    /* ---- Ogólne ---- */
     body {
       background: #0f172a;
       color: #e5e7eb;
@@ -15,17 +16,64 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
+
+    /* ---- Box ---- */
     .box {
       background: #020617;
       padding: 40px;
       border-radius: 16px;
       text-align: center;
       box-shadow: 0 0 40px rgba(0,0,0,.6);
+      animation: fadeIn 1s ease forwards;
     }
+
+    /* ---- Nagłówek ---- */
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       color: #22c55e;
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    /* ---- Przyciski ---- */
+    button {
+      background: #22c55e;
+      border: none;
+      color: #0f172a;
+      font-size: 1.2rem;
+      padding: 12px 30px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(34,197,94,0.5);
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(34,197,94,0.8);
+    }
+
+    /* ---- Dodatkowy tekst ---- */
+    p {
+      margin-top: 20px;
+      opacity: .6;
+      font-size: 0.9rem;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    /* ---- Animacje ---- */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px #22c55e;}
+      50% { text-shadow: 0 0 25px #22c55e;}
+      100% { text-shadow: 0 0 10px #22c55e;}
     }
   </style>
 </head>
@@ -34,16 +82,14 @@
   <div class="box">
     <h1>ESP32 LukaSmart</h1>
 
-    <esp-web-install-button
-      manifest="manifest.json">
+    <!-- ---- Web Install Button z manifestem ---- -->
+    <esp-web-install-button manifest="manifest.json">
       <button slot="activate">
         POŁĄCZ
       </button>
     </esp-web-install-button>
 
-    <p style="margin-top:20px;opacity:.6">
-      Podłącz ESP32 kablem USB
-    </p>
+    <p>Podłącz ESP32 kablem USB</p>
   </div>
 
 </body>
